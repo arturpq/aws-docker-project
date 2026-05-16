@@ -159,11 +159,9 @@ export default function Dashboard() {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           {tasks.map(task => (
-            <Task 
-              key={task.id} 
-              task={task} 
-              onDelete={handleDeleteTask} 
-            />
+            <div key={task.id} className="coluna-de-tarefas">
+              <Task task={task} onDelete={handleDeleteTask} />
+            </div>
           ))}
         </div>
       )}

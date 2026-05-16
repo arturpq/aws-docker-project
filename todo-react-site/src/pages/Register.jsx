@@ -22,7 +22,7 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/api/register', {
+      const response = await fetch('http://52.67.41.175:8000/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ name, email, password, password_confirmation: passwordConfirmation })

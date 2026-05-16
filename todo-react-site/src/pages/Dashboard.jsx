@@ -24,7 +24,7 @@ export default function Dashboard() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/tasks', {
+      const response = await fetch('http://52.67.41.175:8000/api/tasks', {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -52,7 +52,7 @@ export default function Dashboard() {
     if (!title.trim() || !description.trim()) return;
 
     try {
-      const response = await fetch('http://localhost:8000/api/tasks', {
+      const response = await fetch('http://52.67.41.175:8000/api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ export default function Dashboard() {
     if (!window.confirm('Tem certeza que deseja deletar esta tarefa?')) return;
 
     try {
-      const response = await fetch(`http://localhost:8000/api/tasks/${id}`, {
+      const response = await fetch(`http://52.67.41.175:8000/api/tasks/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json' }
       });

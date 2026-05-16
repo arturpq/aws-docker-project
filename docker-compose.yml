@@ -1,0 +1,36 @@
+services:
+  # 1. Banco de Dados
+  db:
+    image: mysql:8.0
+    container_name: api_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel_db
+    ports:
+      - "3306:3306"
+
+  # 2. Back-end (Laravel)
+  api:
+    build: ./todo-laravel-api
+    container_name: api_backend
+    ports:
+      - "8000:80"
+    environment:
+      DB_HOST: db
+      DB_DATABASE: laravel_db
+      DB_USERNAME: root
+      DB_PASSWORD: root
+    depends_on:
+      - db
+
+  # 3. Front-end (React + Vite) <-- O QUE ENTROU AGORA
+  site:
+    build: ./todo-react-site
+    container_name: api_frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./todo-react-site:/app
+      - /app/node_modules
+    depends_on:
+      - api
